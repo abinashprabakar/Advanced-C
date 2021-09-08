@@ -229,7 +229,7 @@ Observation : fl.c:8:15: warning: comparing floating point with == or != is unsa
 ```
 
 **_12. -Winit-self_**
-
+```
 		Warn about variables that are initialized with themselves.
 Eg:
 #include<stdio.h>
