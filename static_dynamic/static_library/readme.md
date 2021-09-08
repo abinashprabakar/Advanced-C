@@ -11,7 +11,7 @@ Steps to create static library :
 
 2. Now, you are ready with object files : sum.o, mul.o, print.o to create your own static library.
 
-3. Now, you have to use the ar command to create the library and pu the objects in it. The archiver also known as ar,    is a Unix utility that maintains groups of files as a single archive file. 
+3. Now, you have to use the ar command to create the library and pu the objects in it. The archiver also known as ar, is a Unix utility that maintains groups of files as a single archive file. 
 
 4. The command to create static library say libabc.a from sum.o mul.o print.o is
 	$ar -rcsv libabc.a sum.o mul.o print.o
