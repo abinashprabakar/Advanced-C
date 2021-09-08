@@ -4,7 +4,6 @@ Static Library(.a) : Library of object code which is linked with, and becomes pa
 
 Compilation : gcc -static filename.c -o filename
 
-
 Steps to create static library :
 ```
 1. To make your own library, you must first compile each of your source files into object files.
@@ -34,7 +33,7 @@ Steps to create static library :
 	t -> displays the content of archive file.
 
 6. To compile with your own static library use the llibrary of cc command preceded by source filename
-	$gcc statp.c libabc.a -o statp
+	$gcc -static main.c libabc.a -o main
 
-	Here statp is an executable file but still it is not statically linked.
+	Here main is an executable file.
 ```
