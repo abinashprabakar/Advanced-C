@@ -1,7 +1,7 @@
 **_Static Library :_** <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/static_dynamic/static_library ">code</a>
 
 ```
-Static libraries, while reusable in multiple programs, are locked into a program at compile time._**
+Static libraries, while reusable in multiple programs, are locked into a program at compile time.
 ```
 
 **_Dynamic Library :_** <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/static_dynamic/dynamic_library ">code</a>
