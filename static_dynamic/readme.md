@@ -1,9 +1,10 @@
-**_Static Library :_** <a href = " ">code</a>
+**_Static Library :_** <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/static_dynamic/static_library ">code</a>
+
 ```
 Static libraries, while reusable in multiple programs, are locked into a program at compile time._**
 ```
 
-**_Dynamic Library :_** <a href = " ">code</a>
+**_Dynamic Library :_** <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/static_dynamic/dynamic_library ">code</a>
 ```
 Dynamic, or shared libraries on the other hand, exist as separate files outside of the executable file.
 ```
