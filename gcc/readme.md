@@ -98,4 +98,304 @@ Observation : Even though CONST is declared as 20, -U option cancels the -D opti
 		main.c: In function ‘main’:   
                 main.c:4:22: error: ‘CONST’ undeclared (first use in this function)
                     4 |  printf("Value : %d",CONST);      
+```
+
+**_4. -r_**
+```
+		Produce a relocatable object as output. This is also known as partial linking.
+
+Eg :
+#include<stdio.h>
+int main()
+{
+	printf("Hello\n");
+	return 0;
+}
+
+Compilation : gcc -o -r main main.c
+
+Observation : A binary file named main is created.
+
+```
+
+**_5. -Werror_**
+```
+		Make all warnings into errors.
+
+Eg:
+/* No header file included */
+int main()
+{
+	printf("Hello\n");
+	return 0;
+}
+
+Compilation : gcc -o main main.c -Werror
+
+Observation : Warning messages turned into errors, 
+                main.c:5:2: error: implicit declaration of function ‘printf’ [-Werror=implicit-function-declaration]
+                    5 |  printf("Value : %d",CONST);   
+		      |  ^~~~~~
+                main.c:5:2: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror]
+```
+
+**_6. -o name_**
+```
+		-o is used to create a executable file.
+
+Eg:
+#include<stdio.h>
+int main()
+{
+	printf("Hello\n");
+	return 0;
+}
+
+Compilation : gcc -o main main.c
+
+Observation : A executable file main is created 
+
+Output : ./main  ==> Hello
+```
+
+**_7. -save-temps_**
+```
+		Store the normally temporary intermediate file(*.s, *.i, *.o) permanently.
+Eg:
+#include<stdio.h>
+int main()
+{
+	printf("Hello\n");
+	return 0;
+}
+
+Compilation : gcc -o main main.c -save-temps
+
+Observation : main.o main.i main.s files are created.
+```
+
+**8. --version_**
+```
+		Prints the version of the compiler
+
+Observation : gcc --version
+
+Output : gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0                                                            
+         Copyright (C) 2019 Free Software Foundation, Inc.
+```
+
+**_9. -print-search-dirs_**
+```
+		Reveal the directories that gcc searches for programs and libraries.
+
+Observation : gcc -print-search-dirs main.c
+
+Output : install : /usr/lib/gcc/x86_64-linux-gnu/9/  
+         programs: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:
+		    /usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/..
+		    /../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../..
+		    /x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../..
+		    /x86_64-linux-gnu/bin/
+```
+
+**_10. -print-prog-name_**
+```
+		gcc -print-prog-name=main.c prints the path to the installation of main.
+
+Observation : gcc -print-prog-name=main.c
+
+Output : main.c
+```
+
+**_11. -Wfloat-equal_**
+
+		Warn if two floating-point numbers are compared.
+
+Eg :
+#include<stdio.h>
+int main()
+{
+float f1 = 4.25;
+float f2 = 4.25;
+if(f1 == f2)
+	printf("f1 == f2\n");
+}
+
+Compilation : gcc -Wfloat-equal float_equal.c
+
+Observation : fl.c:8:15: warning: comparing floating point with == or != is unsafe [-Wfloat-equal]
+                   8 |        if (f1 == f2) {   
+                     |               ^~            
+```
+
+**_12. -Winit-self_**
+
+		Warn about variables that are initialized with themselves.
+Eg:
+#include<stdio.h>
+int main()
+{
+	int i = i;
+	printf("i = %d\n",i);
+}
+
+Compilation : gcc -Wuninitialized -Winit-self init-self.c
+
+Observation : fl.c:5:5: warning: ‘i’ is used uninitialized in this function [-Wuninitialized]
+                 5 | int i = i;   
+                   |     ^     
+```
+
+**_13. -Wshadow_**
+```
+		Warn about local variables shadowing another variable.
+
+Eg:
+#include<stdio.h>
+int main()
+{
+	int i = 42;	
+	if(i == 42)
+	{
+		printf("i = %d\n",i);
+		i = 49;
+		printf("i = %d\n",i);
+	}
+}
+
+Compilation : gcc -Wshadow shadow.c 
+
+Observation : fl.c:10:12: warning: declaration of ‘i’ shadows a previous local [-Wshadow]  
+                 10 |        int i = 49; 
+                    |            ^             
+              fl.c:5:8: note: shadowed declaration is here      
+                  5 |    int i = 42;    
+                    |        ^         
+```
+
+**_14. -dumpversion_**
+```
+		Print the compiler version (for example, 3.0, 6.3.0 or 7)—and don’t do anything else. 
+		This is the compiler version used in filesystem paths and specs.    
+
+Compilation : gcc -dumpversion
+
+Output : 7
+```
+
+**15. -time_**
+```
+		Report the CPU time taken by each subprocess in the compilation sequence.
+
+Eg:
+#include<stdio.h>
+int main()
+{
+	printf("hello\n");
+	return 0;
+}
+
+Compilation : time gcc fl.c
+
+Output : 
+	real    0m0.360s   
+        user    0m0.047s    
+        sys     0m0.172s 
+```
+
+**_16. -dumpmachine_**
+```
+		Print the compiler’s target machine (for example, i686-pc-linux-gnu)-and don’t do anything else.
+
+Compilation : gcc -dumpmachine
+
+Output : x86_64-linux-gnu 
+```
+
+
+**_17. -Wimplicit-function-declaration_**
+```
+		It gives a warning (or) error whenever a function is used before declared. This option is default in
+nature.
+
+Eg :
+/* no header file */
+int main()
+{
+	printf("Hello\n");
+	return 0;
+}
+
+Compilation : gcc main.c
+
+Observation : 
+		fl.c:4:4: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]
+                   4 |    printf("hello");    
+                     |    ^~~~~~     
+```
+
+**_18. -c option_**
+```
+		Compiles source files without linking.  
+
+Eg:
+#include<stdio.h>
+int main()
+{
+	printf("hello\n");
+	return 0;
+}
+
+Compilation : gcc -c file.c
+
+Observation : This compilation generated file.o object file
 ``` 
+
+**_19. -g option_**
+```
+		generates debug information to be used by GDB debugger
+
+Eg:
+#include<stdio.h>
+int main()
+{
+	printf("hello\n");
+	return 0;
+}
+
+Compilation : gcc -g myfile.c -o myfile
+	      gdb myfile
+	      (gdb) run
+	      Starting program: /home/ubuntu/myfile
+	      hello
+	      Program exited with code 012.
+	      (gdb) quit      
+
+Observation : compiled in gdb debugger
+```
+
+**_20. -O option flag_**
+```
+		Set the compiler's optimization level
+
+			-O0    ->   optimization for compilation time
+			-O1    ->   optimization for code size and execution time
+			-O2    ->   optimization for code size and execution time
+			-O3    ->   optimization for code size and execution time
+			-Os    ->   optimization for code size
+			-Ofast ->   O3 with fast none accurate math calculations
+
+Eg:
+#include<stdio.h>
+int main()
+{
+	printf("Hello\n");
+	return 0;
+}
+
+Compilation : gcc -O myfile.c -o myfile
+
+Observation : Optimized according to the level
+
+Output : Hello                                
+```  
