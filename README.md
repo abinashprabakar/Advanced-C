@@ -57,4 +57,10 @@ use the data efficiently. </td>
 <td> GNU Compiler Collections (GCC) </td>
 <td> The usual way to run GCC is to run the executable called gcc, or machine-gcc when cross-compiling, or machine-gcc-version to run a specific version of GCC.  When you compile C++ programs, you should invoke GCC as g++ instead </td>
 <td><a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/gcc">directory</a></td>
+
+<tr>
+<td> Static & Dynamic Library </td>
+<td> Library is collection of predefined functions. Library consists of precompiled code in the form of object files.
+  There are two libraries ie, static library and dynamic library.</td> 
+<td><a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/static_dynamic">directory</a></td>
 </table>                                        
