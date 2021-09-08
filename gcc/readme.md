@@ -208,7 +208,7 @@ Output : main.c
 ```
 
 **_11. -Wfloat-equal_**
-
+```
 		Warn if two floating-point numbers are compared.
 
 Eg :
