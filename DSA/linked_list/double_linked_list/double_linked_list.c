@@ -16,6 +16,11 @@ typedef struct node
 	struct node *next;
 }NODE;
 
+/* add_function to add element at the starting
+ *
+ * @param[in] head, n
+ * @param[out] head, current
+ */
 NODE *add_first(NODE *head, int n)
 {
 	NODE *current;
@@ -38,6 +43,11 @@ NODE *add_first(NODE *head, int n)
 	return head;
 }
 
+/* add_function to add element at the last
+ *
+ * @param[in] head, n
+ * @param[out] head, current
+ */
 NODE *add_last(NODE *head, int n)
 {
 	NODE *current;
@@ -63,6 +73,11 @@ NODE *add_last(NODE *head, int n)
 	return head;
 }
 
+/* delete_function to delete the element at desired position
+ *
+ * @param[in] head, n
+ * @param[out] head, current
+ */
 NODE *del_node(NODE *head,int n)
 {
 	if(head == NULL)      /* if head is empty */
