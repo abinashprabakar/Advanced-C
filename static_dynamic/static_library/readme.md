@@ -36,4 +36,8 @@ Steps to create static library :
 	$gcc -static main.c libabc.a -o main
 
 	Here main is an executable file.
+
+7. ls -lh  -> to show the total size occupied by static program
+
+		Eg : total 60k
 ```
