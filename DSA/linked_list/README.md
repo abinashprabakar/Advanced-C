@@ -16,5 +16,9 @@
 
 **double_linked_list** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/DSA/linked_list/double_linked_list">directory</a> 
 
-		A group of nodes which are linked together with 2 links is called Double linked list. 
-
+		A group of nodes which are linked together with 2 links is called Double linked list. Double linked 
+		list is a linear data structure which is capable to traverse in forward direction as well as backward
+		direction. Every node in double linked list contains three parts ;
+			1. Information   2. Address of next node  3. Address of previous node	
+		The last node of double linked list *next should be NULL indicating end of the linked list.
+		The first node of double linked list *prev should be NULL indicating start of linked list
