@@ -28,4 +28,8 @@ a location in each program address space where it will not overlap any other use
 	Here main is the executable file
 
 5. ldd -> used to know the dependencies.
+		ldd main
+
+6. ls -h -> to show the total size occupied by the shared library
+		Eg : total 52k
 ```
