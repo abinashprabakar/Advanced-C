@@ -1,4 +1,4 @@
-# Executable and Linkable Format
+# Executable and Linkable Format (ELF)
 
 <h1> What is ELF ? </h1>
 
