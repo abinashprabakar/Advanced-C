@@ -7,3 +7,15 @@ on different computers across a network.
 	
 	Syntax : int mkfifo(const char *pathname, mode_t mode);
 ```
+
+**named_pipe_fileoperation.c** - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/NamedPipes/named_pipe_fileoperation.c">code</a>
+
+		This program implements the file operation through the named pipe.
+
+**named_pipe_fork.c** - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/NamedPipes/named_pipe_fork.c">code</a>
+
+		This program implements the fork() system call through the named pipe.
+
+**named_pipe_readwrite.c** - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/NamedPipes/named_pipe_fork.c">code</a>
+
+		This program implements the read & write operation through the named pipe.
