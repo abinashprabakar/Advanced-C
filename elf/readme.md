@@ -37,3 +37,9 @@ about the file. The first hexadecimal parts define that this is an ELF file (45 
 the 7f value.
 The ELF Header is mandatory. It ensures that data is correctly interpreted during linking or execution. 
 
+<b> Class : </b>
+	After the type declaration, there is a Class field defined. This value determines the architecture for the file.	It can be 32-bit (= 01) or 64-bit (= 02) architecture. The magic shows a 02, which is translated by the 
+	readelf command as an ELF64 file. In other words, an ElF file using the 64-bit architecture.
+
+<b> Data: </b>
+	
