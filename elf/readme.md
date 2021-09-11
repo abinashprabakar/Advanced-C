@@ -139,6 +139,28 @@ Besides the ELF Header, ELF files consists of three parts,
 	.rodata, and .bss. Each of these sections is loaded with different access rights, which can be seen with
 	readelf -S.
 
+<b><i> .text </i></b>
 
+	Contains executable code. It will be packed into a segment with read and execute access rights. It is only
+	loaded once, as the contents will not change. This can be seen with the objdump utility.
 
+<b><i> .data </i></b>
 
+	Initialized data with read/write access rights.
+
+<b><i> .rodata </i></b>
+
+	Initialized data, with read access rights (only =A)
+
+<b><i> .bss </i></b>
+
+	Uninitialized data, with read/write access rights (=WA)
+
+<i> Commands to see section and headers </i>
+
+   <ul>
+   <li> dumpelf </li>
+   <li> elfls -p /bin/ps </li>   
+   <li> eu-readelf -section-headers /bin/ps </li>
+   <li> readelf -S /bin/ps </li>
+   <li> objdump -h /bin/ps </li></ul>   
