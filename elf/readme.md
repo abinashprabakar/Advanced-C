@@ -45,3 +45,51 @@ The ELF Header is mandatory. It ensures that data is correctly interpreted durin
 
 <b> Data: </b>
 	
+	Next part is the data field. It knows two options: 01 for LSB also known as little-endian. Then there is the
+	value 02, for MSB known as big-endian. This particular value helps to interpet the remaining objects
+	correctly within the file. This is important, as different types of processors deal differently with the 
+	incoming instructions and data structures. In this case, LSB is used, which is common for AMD64 processors.
+
+<b> Version: </b>
+
+	Next in line is another “01” in the magic, which is the version number.
+	Currently, there is only 1 version type:currently, which is the value “01”.
+
+<b> OS/ABI: </b>
+
+	Each operating system has a big overlap in common functions. In addition, each of them has specific ones,
+	or at least minor differences between them. The definition of the right set is done with an
+	Application Binary Interface (ABI). This way the operating system and applications both know what to expect
+	and functions are correctly forwarded. These two fields describe what ABI is used and the related version.
+	In this case, the value is 00, which means no specific extension is used. The output shows this as System V.
+
+<b> ABI Version: </b>
+
+	ABI is short for Application Binary Interface and specifies a low-level interface between the operating
+	system and a piece of executable code. When needed, a version for the ABI can be specified.
+
+<b> Ehdr (ELF Header) </b>
+
+The ELF header is described by the type ELf32_hdr or ELf64_hdr:
+
+<img src = "https://hydrasky.com/wp-content/uploads/2018/10/Capture03102.png"> 
+
+The fields have the following meanings:
+
+<i> e_ident <i>
+
+	This array of bytes specifies how to interpret the file, independent of the processor or the file's remaining
+	contents.  Within this array everything is named by macros, which start with the prefix EI_ and may contain
+	values which start with the prefix ELF.  The following macros are defined:
+
+	EI_MAG0
+		The first byte of the magic number. It must be filled with ELFMAG0. (0: 0x7f)
+
+	EI_MAG1
+		The second byte of the magic number. It must be filled with ELFMAG1. (1: 'E')
+	
+	EI_MAG2
+		The third byte of the magic number. It must be filled with ELFMAG2. (2: 'L')
+
+	EI_MAG3
+		The fourth byte of the magic number. It must be filled with ELFMAG3. (3: 'F') 
