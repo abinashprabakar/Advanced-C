@@ -1,0 +1,167 @@
+# Executable and Linkable Format (ELF)
+
+<h1> What is ELF ? </h1>
+
+Executable and Linkable Format, is a common standard for executable files, object code, shared libraries, and core
+dumps.
+
+There are three main types of object files.
+	
+	1. A relocatable file holds code and data suitable for linking with other object files to create an 
+	   executable or a shared object file.
+
+	2. An executable file holds a program suitable for execution.
+
+	3. A shared object file holds code and data suitable for linking in two contexts.
+
+The reason behind that decision was the design of ELF – flexibility, extensibility, and cross-platform support for
+different endian formats and address sizes. ELF’s design is not limited to a specific processor, instruction set, or
+hardware architecture.
+
+<img src="https://www.conradk.com/content/images/2018/06/man-elf-1.png">
+
+<h1> Structure of an ELF file </h1>
+
+ELF consists of two sections,
+
+	1. ELF Header  -> it is 32 byte long and identifies the format of a file.
+	2. File Data   -> it consists of three parts i.e Program Headers, Section Headers, Data
+
+<img src = "https://assets.linux-audit.com/wp-content/uploads/2015/08/elf-header-linux-binary.png">
+
+<h1><b> ELF Header </h1></b>
+
+As can be seen in the above image, the ELF header starts with some magic. This ELF header magic provides information
+about the file. The first hexadecimal parts define that this is an ELF file (45 = E, 4c = L, 46 = F), prefixed with 
+the 7f value.
+The ELF Header is mandatory. It ensures that data is correctly interpreted during linking or execution. 
+
+<b> Class : </b>
+
+	After the type declaration, there is a Class field defined. This value determines the architecture for
+	the file.It can be 32-bit (= 01) or 64-bit (= 02) architecture. The magic shows a 02, which is translated
+	by the readelf command as an ELF64 file. In other words, an ElF file using the 64-bit architecture.
+
+<b> Data: </b>
+	
+	Next part is the data field. It knows two options: 01 for LSB also known as little-endian. Then there is the
+	value 02, for MSB known as big-endian. This particular value helps to interpet the remaining objects
+	correctly within the file. This is important, as different types of processors deal differently with the 
+	incoming instructions and data structures. In this case, LSB is used, which is common for AMD64 processors.
+
+<b> Version: </b>
+
+	Next in line is another “01” in the magic, which is the version number.
+	Currently, there is only 1 version type:currently, which is the value “01”.
+
+<b> OS/ABI: </b>
+
+	Each operating system has a big overlap in common functions. In addition, each of them has specific ones,
+	or at least minor differences between them. The definition of the right set is done with an
+	Application Binary Interface (ABI). This way the operating system and applications both know what to expect
+	and functions are correctly forwarded. These two fields describe what ABI is used and the related version.
+	In this case, the value is 00, which means no specific extension is used. The output shows this as System V.
+
+<b> ABI Version: </b>
+
+	ABI is short for Application Binary Interface and specifies a low-level interface between the operating
+	system and a piece of executable code. When needed, a version for the ABI can be specified.
+
+<b> Ehdr (ELF Header) </b>
+
+The ELF header is described by the type ELf32_hdr or ELf64_hdr:
+
+<img src = "https://hydrasky.com/wp-content/uploads/2018/10/Capture03102.png"> 
+
+The fields have the following meanings:
+
+<i> e_ident </i>
+
+	This array of bytes specifies how to interpret the file, independent of the processor or the file's remaining
+	contents.  Within this array everything is named by macros, which start with the prefix EI_ and may contain
+	values which start with the prefix ELF.  The following macros are defined:
+
+	EI_MAG0
+		The first byte of the magic number. It must be filled with ELFMAG0. (0: 0x7f)
+
+	EI_MAG1
+		The second byte of the magic number. It must be filled with ELFMAG1. (1: 'E')
+	
+	EI_MAG2
+		The third byte of the magic number. It must be filled with ELFMAG2. (2: 'L')
+
+	EI_MAG3
+		The fourth byte of the magic number. It must be filled with ELFMAG3. (3: 'F')
+
+<h1><b> File Data </b></h1>
+
+Besides the ELF Header, ELF files consists of three parts,
+
+    1. Program Headers or Segments
+    2. Section Headers or Sections
+    3. Data
+
+<b> Program Headers </b>
+
+	An ELF file consists of zero or more segments, and describes how to create a process/memory image for runtime
+	execution. When the kernel sees these segments, it uses them to map them into virtual address space, using the
+	mmap(2) system call. In other words, it converts predefined instructions into a memory image. If your ELF file
+	is a normal binary, it requires these program headers. Otherwise, it simply won’t run. It uses these headers,
+	with the underlying data structure, to form a process. This process is similar for shared libraries.
+
+<img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2144_CompleteTou6.png">
+
+   <b> GNU_EH_FRAME </b>
+
+	This is a sorted queue used by the GNU C compiler (gcc). It stores exception handlers. So when something
+	goes wrong, it can use this area to deal correctly with it.
+
+   <b> GNU_STACK </b>
+
+	This header is used to store stack information. The stack is a buffer, or scratch place, where items are
+	stored, like local variables. This will occur with LIFO (Last In, First Out), similar to putting boxes on
+	top of each other. When a process function is started a block is reserved. When the function is finished,
+	it will be marked as free again.
+
+   <i> Commands to see program headers </i>
+   <ul>
+   <li> dumpelf </li>
+   <li> elfls -S /bin/ps </li>
+   <li> eu-readelf -program-headers /bin/ps </li></ul>
+
+<b> Section headers </b>
+
+	Sections can be found in an ELF binary after the GNU C compiler transformed C code into assembly, followed
+	by the GNU assembler, which creates objects of it.
+
+	A segment can have 0 or more sections. For executable files there are four main sections: .text, .data,
+	.rodata, and .bss. Each of these sections is loaded with different access rights, which can be seen with
+	readelf -S.
+
+<img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2211_CompleteTou3.png">
+
+<b><i> .text </i></b>
+
+	Contains executable code. It will be packed into a segment with read and execute access rights. It is only
+	loaded once, as the contents will not change. This can be seen with the objdump utility.
+
+<b><i> .data </i></b>
+
+	Initialized data with read/write access rights.
+
+<b><i> .rodata </i></b>
+
+	Initialized data, with read access rights (only =A)
+
+<b><i> .bss </i></b>
+
+	Uninitialized data, with read/write access rights (=WA)
+
+<i> Commands to see section and headers </i>
+
+   <ul>
+   <li> dumpelf </li>
+   <li> elfls -p /bin/ps </li>   
+   <li> eu-readelf -section-headers /bin/ps </li>
+   <li> readelf -S /bin/ps </li>
+   <li> objdump -h /bin/ps </li></ul>   
