@@ -24,6 +24,7 @@ hardware architecture.
 <h1> Structure of an ELF file </h1>
 
 ELF consists of two sections,
+
 	1. ELF Header  -> it is 32 byte long and identifies the format of a file.
 	2. File Data   -> it consists of three parts i.e Program Headers, Section Headers, Data
 
