@@ -117,10 +117,10 @@ Besides the ELF Header, ELF files consists of three parts,
 	   goes wrong, it can use this area to deal correctly with it.
 
    <b> GNU_STACK </b>
-	   This header is used to store stack information. The stack is a buffer, or scratch place, where items are
-	   stored, like local variables. This will occur with LIFO (Last In, First Out), similar to putting boxes on
-	   top of each other. When a process function is started a block is reserved. When the function is finished,
-	   it will be marked as free again.
+	This header is used to store stack information. The stack is a buffer, or scratch place, where items are
+	stored, like local variables. This will occur with LIFO (Last In, First Out), similar to putting boxes on
+	top of each other. When a process function is started a block is reserved. When the function is finished,
+	it will be marked as free again.
 
    <i> Commands to see program headers </i>
    <ul>
