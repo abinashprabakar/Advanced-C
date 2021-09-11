@@ -93,3 +93,4 @@ The fields have the following meanings:
 
 	EI_MAG3
 		The fourth byte of the magic number. It must be filled with ELFMAG3. (3: 'F') 
+
