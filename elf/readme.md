@@ -30,7 +30,7 @@ ELF consists of two sections,
 
 <img src = "https://assets.linux-audit.com/wp-content/uploads/2015/08/elf-header-linux-binary.png">
 
-<h1> ELF Header </h1>
+<h1><b> ELF Header </h1></b>
 
 As can be seen in the above image, the ELF header starts with some magic. This ELF header magic provides information
 about the file. The first hexadecimal parts define that this is an ELF file (45 = E, 4c = L, 46 = F), prefixed with 
@@ -92,5 +92,9 @@ The fields have the following meanings:
 		The third byte of the magic number. It must be filled with ELFMAG2. (2: 'L')
 
 	EI_MAG3
-		The fourth byte of the magic number. It must be filled with ELFMAG3. (3: 'F') 
+		The fourth byte of the magic number. It must be filled with ELFMAG3. (3: 'F')
+
+<b> File Data </b>
+
+
 
