@@ -139,6 +139,8 @@ Besides the ELF Header, ELF files consists of three parts,
 	.rodata, and .bss. Each of these sections is loaded with different access rights, which can be seen with
 	readelf -S.
 
+<img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2211_CompleteTou3.png">
+
 <b><i> .text </i></b>
 
 	Contains executable code. It will be packed into a segment with read and execute access rights. It is only
