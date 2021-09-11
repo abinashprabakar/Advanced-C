@@ -1,6 +1,4 @@
-p {text-align: center;}
-<p> Executable and Linkable Format (ELF) </p>
-
+# Executable and Linkable Format
 
 <h1> What is ELF ? </h1>
 
