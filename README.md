@@ -55,7 +55,7 @@ use the data efficiently. </td>
 
 <tr>
 <td> Executable and Linkable Format (ELF) </td>
-<td>  elf - format of Executable and Linking Format (ELF) files </td>
+<td> Format of Executable and Linking Format (ELF) files </td>
 <td><a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/ELF">directory</a></td>
 
 <tr> 
