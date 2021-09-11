@@ -113,10 +113,12 @@ Besides the ELF Header, ELF files consists of three parts,
 <img src = "https://assets.linux-audit.com/wp-content/uploads/2015/08/elf-program-headers-segments.png">
 
 <b> GNU_EH_FRAME </b>
+
 	This is a sorted queue used by the GNU C compiler (gcc). It stores exception handlers. So when something
 	goes wrong, it can use this area to deal correctly with it.
 
 <b> GNU_STACK </b>
+
 	This header is used to store stack information. The stack is a buffer, or scratch place, where items are
 	stored, like local variables. This will occur with LIFO (Last In, First Out), similar to putting boxes on
 	top of each other. When a process function is started a block is reserved. When the function is finished,
