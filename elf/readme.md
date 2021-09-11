@@ -94,7 +94,38 @@ The fields have the following meanings:
 	EI_MAG3
 		The fourth byte of the magic number. It must be filled with ELFMAG3. (3: 'F')
 
-<b> File Data </b>
+<h1><b> File Data </b></h1>
 
+Besides the ELF Header, ELF files consists of three parts,
+
+    1. Program Headers or Segments
+    2. Section Headers or Sections
+    3. Data
+
+<b> Program Headers </b>
+
+	An ELF file consists of zero or more segments, and describes how to create a process/memory image for runtime
+	execution. When the kernel sees these segments, it uses them to map them into virtual address space, using the
+	mmap(2) system call. In other words, it converts predefined instructions into a memory image. If your ELF file
+	is a normal binary, it requires these program headers. Otherwise, it simply won’t run. It uses these headers,
+	with the underlying data structure, to form a process. This process is similar for shared libraries.
+
+<img src = "https://assets.linux-audit.com/wp-content/uploads/2015/08/elf-program-headers-segments.png">
+
+   <b> GNU_EH_FRAME </b>
+	   This is a sorted queue used by the GNU C compiler (gcc). It stores exception handlers. So when something
+	   goes wrong, it can use this area to deal correctly with it.
+
+   <b> GNU_STACK </b>
+	   This header is used to store stack information. The stack is a buffer, or scratch place, where items are
+	   stored, like local variables. This will occur with LIFO (Last In, First Out), similar to putting boxes on
+	   top of each other. When a process function is started a block is reserved. When the function is finished,
+	   it will be marked as free again.
+
+   <i> Commands to see program headers </i>
+   <ul>
+   <li> dumpelf </li>
+   <li> elfls -S /bin/ps </li>
+   <li> eu-readelf -program-headers /bin/ps </li></ul>
 
 
