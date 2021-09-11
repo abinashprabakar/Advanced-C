@@ -53,6 +53,11 @@ use the data efficiently. </td>
 <td> Inter Process Communication (IPC) refers to a mechanism, where the operating systems allow various processes to communicate with each other. This involves synchronizing their actions and managing shared data. </td>
 <td><a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/IPC">directory</a></td>
 
+<tr>
+<td> Executable and Linkable Format (ELF) </td>
+<td>  elf - format of Executable and Linking Format (ELF) files </td>
+<td><a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/ELF">directory</a></td>
+
 <tr> 
 <td> GNU Compiler Collections (GCC) </td>
 <td> The usual way to run GCC is to run the executable called gcc, or machine-gcc when cross-compiling, or machine-gcc-version to run a specific version of GCC.  When you compile C++ programs, you should invoke GCC as g++ instead </td>
