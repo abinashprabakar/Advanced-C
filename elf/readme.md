@@ -112,12 +112,12 @@ Besides the ELF Header, ELF files consists of three parts,
 
 <img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2144_CompleteTou6.png">
 
-<b> GNU_EH_FRAME </b>
+   <b> GNU_EH_FRAME </b>
 
 	This is a sorted queue used by the GNU C compiler (gcc). It stores exception handlers. So when something
 	goes wrong, it can use this area to deal correctly with it.
 
-<b> GNU_STACK </b>
+   <b> GNU_STACK </b>
 
 	This header is used to store stack information. The stack is a buffer, or scratch place, where items are
 	stored, like local variables. This will occur with LIFO (Last In, First Out), similar to putting boxes on
@@ -129,5 +129,16 @@ Besides the ELF Header, ELF files consists of three parts,
    <li> dumpelf </li>
    <li> elfls -S /bin/ps </li>
    <li> eu-readelf -program-headers /bin/ps </li></ul>
+
+<b> Section headers </b>
+
+	Sections can be found in an ELF binary after the GNU C compiler transformed C code into assembly, followed
+	by the GNU assembler, which creates objects of it.
+
+	A segment can have 0 or more sections. For executable files there are four main sections: .text, .data,
+	.rodata, and .bss. Each of these sections is loaded with different access rights, which can be seen with
+	readelf -S.
+
+
 
 
