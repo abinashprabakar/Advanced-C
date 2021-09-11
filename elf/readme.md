@@ -76,7 +76,7 @@ The ELF header is described by the type ELf32_hdr or ELf64_hdr:
 
 The fields have the following meanings:
 
-<i> e_ident <i>
+<i> e_ident </i>
 
 	This array of bytes specifies how to interpret the file, independent of the processor or the file's remaining
 	contents.  Within this array everything is named by macros, which start with the prefix EI_ and may contain
