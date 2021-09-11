@@ -42,19 +42,19 @@ The ELF Header is mandatory. It ensures that data is correctly interpreted durin
 	the file.It can be 32-bit (= 01) or 64-bit (= 02) architecture. The magic shows a 02, which is translated
 	by the readelf command as an ELF64 file. In other words, an ElF file using the 64-bit architecture.
 
-<b> Data: </b>
+<b> Data : </b>
 	
 	Next part is the data field. It knows two options: 01 for LSB also known as little-endian. Then there is the
 	value 02, for MSB known as big-endian. This particular value helps to interpet the remaining objects
 	correctly within the file. This is important, as different types of processors deal differently with the 
 	incoming instructions and data structures. In this case, LSB is used, which is common for AMD64 processors.
 
-<b> Version: </b>
+<b> Version : </b>
 
 	Next in line is another “01” in the magic, which is the version number.
 	Currently, there is only 1 version type:currently, which is the value “01”.
 
-<b> OS/ABI: </b>
+<b> OS/ABI : </b>
 
 	Each operating system has a big overlap in common functions. In addition, each of them has specific ones,
 	or at least minor differences between them. The definition of the right set is done with an
@@ -62,7 +62,7 @@ The ELF Header is mandatory. It ensures that data is correctly interpreted durin
 	and functions are correctly forwarded. These two fields describe what ABI is used and the related version.
 	In this case, the value is 00, which means no specific extension is used. The output shows this as System V.
 
-<b> ABI Version: </b>
+<b> ABI Version : </b>
 
 	ABI is short for Application Binary Interface and specifies a low-level interface between the operating
 	system and a piece of executable code. When needed, a version for the ABI can be specified.
