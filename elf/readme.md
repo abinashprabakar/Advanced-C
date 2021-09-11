@@ -110,7 +110,7 @@ Besides the ELF Header, ELF files consists of three parts,
 	is a normal binary, it requires these program headers. Otherwise, it simply won’t run. It uses these headers,
 	with the underlying data structure, to form a process. This process is similar for shared libraries.
 
-<img src = "https://assets.linux-audit.com/wp-content/uploads/2015/08/elf-program-headers-segments.png">
+<img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2144_CompleteTou6.png">
 
 <b> GNU_EH_FRAME </b>
 
