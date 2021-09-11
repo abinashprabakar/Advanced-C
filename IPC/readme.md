@@ -6,7 +6,7 @@
 		important that the process which writes, closes its read end of the pipe and the process which reads,
 		closes its write end of a pipe. 
 
-**NamedPipe** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/IPC/NamedPipe">directory</a>
+**NamedPipes** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/IPC/NamedPipe">directory</a>
 
 		A FIFO, also known as a named pipe, is a special file similar to a pipe but with a name on the
 		filesystem. Multiple processes can access this special file for reading and writing like any ordinary
