@@ -22,3 +22,10 @@
 			1. Information   2. Address of next node  3. Address of previous node	
 		The last node of double linked list *next should be NULL indicating end of the linked list.
 		The first node of double linked list *prev should be NULL indicating start of linked list
+
+**circular_linked_list** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/DSA/linked_list/circular_linked_list">directory</a>
+
+		Circular linked list is a linked list where all nodes are connected to form a circle. There is no
+		NULL at the end. A circular linked list can be a singly circular linked list or doubly circular linked
+		list.  Circular Doubly Linked Lists are used for implementation of advanced data structures like
+		Fibonacci Heap.
