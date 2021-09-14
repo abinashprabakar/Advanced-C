@@ -93,6 +93,60 @@ The fields have the following meanings:
 	EI_MAG3
 		The fourth byte of the magic number. It must be filled with ELFMAG3. (3: 'F')
 
+<i> e_type </i>  -  This member of the structure identifies the object file type:
+	
+	ET_NONE  -  An unknown type
+	ET_REL   -  A relocatable file
+	ET_EXEC  -  A executable file
+	ET_DYN   -  A shared object
+	ET_CORE  -  A core file
+
+<i> e_machine </i>  - This member specifies the required architecture for an individual file. For example,
+
+	EM_NONE  - An unknown machine
+	EM_M32   - AT&T WE 32100
+	EM_386   - Intel 80386
+	EM_IA_64 - Intel Pentium
+
+<i> e_version </i>  -  This member identifies the file version
+
+	EV_NONE 0    - Invalid version
+	EV_CURRENT  - Current version
+
+<i> e_entry </i>
+
+	This member gives the virtual address to which the system first transfers control, thus starting the process.
+	If the file has no associated entry point, this member holds zero.
+
+<i> e_phoff </i>
+	This member holds the program header table's file offset in bytes.  If the file has no program header table,
+	this member holds zero.
+
+<i> e_shoff </i>
+
+	This member holds the section header table's file offset in bytes.  If the file has no section header table,
+	this member holds zero.
+
+<i> e_flags </i>
+
+	This member holds processor-specific flags associated with the file.  Flag names take the form 
+	EF_`machine_flag'. Currently, no flags have been defined.
+
+<i> e_ehsize </i>
+
+	This member holds the ELF header's size in bytes.
+
+<i> e_phemtsize </i>
+
+	This member holds the size in bytes of one entry in the file's program header table; all entries are the same
+	size.
+
+<i> e_phnum </i>
+
+	This member holds the number of entries in the program header table.  Thus the product of e_phentsize and
+	e_phnum gives the table's size in bytes.  If a file has no program header, e_phnum holds the value zero.
+
+
 <h1><b> File Data </b></h1>
 
 Besides the ELF Header, ELF files consists of three parts,
@@ -110,6 +164,30 @@ Besides the ELF Header, ELF files consists of three parts,
 	with the underlying data structure, to form a process. This process is similar for shared libraries.
 
 <img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2144_CompleteTou6.png">
+
+The ELF program header is described by the Elf32_Phdr or Elf64_Phdr depending on the architecture:
+
+	typedef struct {
+	       unit32_t ptype;
+	       Elf32_Off p_offset;
+	       Elf32_Addr p_vaddr;
+	       Elf32_Addr p_paddr;
+               uint32_t   p_filesz;
+               uint32_t   p_memsz;
+               uint32_t   p_flags;
+               uint32_t   p_align;
+           } Elf32_Phdr;
+
+	typedef struct {
+               uint32_t   p_type;
+               uint32_t   p_flags;
+               Elf64_Off  p_offset;
+               Elf64_Addr p_vaddr;
+               Elf64_Addr p_paddr;
+               uint64_t   p_filesz;
+               uint64_t   p_memsz;
+               uint64_t   p_align;
+           } Elf64_Phdr;
 
    <b> GNU_EH_FRAME </b>
 
@@ -140,6 +218,34 @@ Besides the ELF Header, ELF files consists of three parts,
 
 <img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2211_CompleteTou3.png">
 
+	typedef struct {
+               uint32_t   sh_name;
+               uint32_t   sh_type;
+               uint32_t   sh_flags;
+               Elf32_Addr sh_addr;
+               Elf32_Off  sh_offset;
+               uint32_t   sh_size;
+               uint32_t   sh_link;
+               uint32_t   sh_info;
+               uint32_t   sh_addralign;
+               uint32_t   sh_entsize;
+           } Elf32_Shdr;
+
+	typedef struct {
+               uint32_t   sh_name;
+               uint32_t   sh_type;
+               uint64_t   sh_flags;
+               Elf64_Addr sh_addr;
+               Elf64_Off  sh_offset;
+               uint64_t   sh_size;
+               uint32_t   sh_link;
+               uint32_t   sh_info;
+               uint64_t   sh_addralign;
+               uint64_t   sh_entsize;
+           } Elf64_Shdr;
+
+Various sections hold program and control information:
+
 <b><i> .text </i></b>
 
 	Contains executable code. It will be packed into a segment with read and execute access rights. It is only
@@ -147,7 +253,8 @@ Besides the ELF Header, ELF files consists of three parts,
 
 <b><i> .data </i></b>
 
-	Initialized data with read/write access rights.
+	Initialized data with read/write access rights that contribute to the program's memory image. This section is
+	of type SHT_PROGBITS. The attribute types are SHF_ALLOC and SHF_WRITE.
 
 <b><i> .rodata </i></b>
 
@@ -155,7 +262,77 @@ Besides the ELF Header, ELF files consists of three parts,
 
 <b><i> .bss </i></b>
 
-	Uninitialized data, with read/write access rights (=WA)
+	Uninitialized data, with read/write access rights (=WA) that contributes to the program's memory image. 
+	By definition, the system initializes the data with zeros when the program begins to run. This section is of
+	type SHT_NOBITS. The attribute types are SHF_ALLOC and SHF_WRITE.
+
+<b><i> .comment </b></i>
+
+	This section holds version control information. This section is of type SHT_PROGBITS. No attribute types are
+	used.
+
+<b><i> .ctors </b></i>
+
+	This section holds initialized pointers to the C++ constructor functions. This section is of type SHT_PROGBITS.
+	The attribute types are SHF_ALLOC and SHF_WRITE.
+
+<b><i> .data1 </b></i>
+
+	This section holds initialized data that contribute to the program's memory image. This section is of type
+	SHT_PROGBITS. The attribute types are SHF_ALLOC and SHF_WRITE.
+
+<b><i> .debug </b></i>
+
+	This section holds information for symbolic debugging. The contents are unspecified. This section is of type
+	SHT_PROGBITS.  No attribute types are used.
+
+<b><i> .dtors </b></i>
+
+	This section holds initialized pointers to the C++ destructor functions. This section is of type SHT_PROGBITS.
+	The attribute types are SHF_ALLOC and SHF_WRITE.
+
+<b><i> .dynamic </b></i>
+
+	This section holds dynamic linking information. The section's attributes will include the SHF_ALLOC bit.
+	Whether the SHF_WRITE bit is set is processor-specific. This section is of type SHT_DYNAMIC.
+
+<b><i> .dynstr </b></i>
+	
+	This section holds strings needed for dynamic linking, most commonly the strings that represent the names
+	associated with symbol table entries.  This section is of type SHT_STRTAB.  The attribute type used is
+	SHF_ALLOC.
+
+<b><i> .gnu.version </b></i>
+
+	This section holds the version symbol table, an array of ElfN_Half elements. This section is of type
+	SHT_GNU_versym.  The attribute type used is SHF_ALLOC.
+
+<b><i> .got </b></i>
+
+	This section holds the global offset table. This section is of type SHT_PROGBITS. The attributes are
+	processor-specific.
+
+<b><i> .hash </b></i>
+
+	This section holds a symbol hash table. This section is of type SHT_HASH. The attribute used is SHF_ALLOC.
+
+<b><i> .init </b></i>
+
+	This section holds executable instructions that contribute to the process initialization code.  When a program
+	starts to run the system arranges to execute the code in this section before calling the main program entry
+	point. This section is of type SHT_PROGBITS.  The attributes used are SHF_ALLOC and SHF_EXECINSTR.
+
+<b><i> .interp </b></i>
+
+	This section holds the pathname of a program interpreter. If the file has a loadable segment that includes the
+	section, the section's attributes will include the SHF_ALLOC bit. Otherwise, that bit will be off. This
+	section is of type SHT_PROGBITS.
+
+<b><i> .symtab </b></i>
+
+	This section holds a symbol table.  If the file has a loadable segment that includes the symbol table, the
+	section's attributes will include the SHF_ALLOC bit. Otherwise, the bit will be off. This section is of type
+	SHT_SYMTAB.
 
 <i> Commands to see section and headers </i>
 
