@@ -13,7 +13,7 @@
 		file. A named pipe is a named, one-way or duplex pipe for communication between the pipe server and
 		one or more pipe clients.
 
-**sharememory** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/IPC/sharedmemory">directory</a>
+**sharedmemory** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/IPC/sharedmemory">directory</a>
 
 		Shared Memory allows two or more processes to share the same region (usually referred to as a segment)
 		of physical memory. Since a shared memory segment becomes part of a process's user space memory, no
