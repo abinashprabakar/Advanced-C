@@ -12,3 +12,10 @@
 		filesystem. Multiple processes can access this special file for reading and writing like any ordinary
 		file. A named pipe is a named, one-way or duplex pipe for communication between the pipe server and
 		one or more pipe clients.
+
+**sharememory** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/IPC/sharedmemory">directory</a>
+
+		Shared Memory allows two or more processes to share the same region (usually referred to as a segment)
+		of physical memory. Since a shared memory segment becomes part of a process's user space memory, no
+		kernel intervention is required for IPC. All that is required is that one process copies data into the
+		shared memory,that data is immediately available to all othet processers sharing the same segment.	
