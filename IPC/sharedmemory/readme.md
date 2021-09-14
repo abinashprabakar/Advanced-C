@@ -25,13 +25,21 @@ Steps for using Shared Memory
 ```
 
 memory_creation.c - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/sharedmemory/memory_creation.c">code</a>
+```
 	This program implements about the creation of shared memory segment
+```
 
 memory_process.c - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/sharedmemory/memory_process.c">code</a>
+```
 	This program implements the attachement of shared memory to the process and put data into the shared memory.
+```
 
 memory_delete.c - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/sharedmemory/memory_delete.c">code</a>
+```
 	This program deletes the shared memory segment and get the data structure associated with the shared memory.
+```
 
 memory_read.c - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/sharedmemory/memory_read.c">code</a>
+```
 	This program implements the reading of the data from shared memory segment.
+```
