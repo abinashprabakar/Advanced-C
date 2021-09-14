@@ -9,7 +9,7 @@ dynamic library(.so) :
 Steps to create Dynamic Library:
 ```
 1. PIC(Position Independent Code) is commonly used for shared libraries, so that the same library code can be loaded in
-a location in each program address space where it will not overlap any other uses of memory.
+   a location in each program address space where it will not overlap any other uses of memory.
    The commands to create PIC object files is
 		gcc -c -fpic mul.c
 		gcc -c -fpic sum.c
