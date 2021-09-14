@@ -31,8 +31,21 @@ a location in each program address space where it will not overlap any other use
 	Here main is the executable file
 
 5. ldd -> used to know the dependencies.
-		ldd main
+	ldd is a tool that allows us to see recursive shared library dependencies. That means we can see the
+	complete list of all shared libraries an artifact needs at runtime. It also allows us to see where these
+	dependencies are located.
 
 6. ls -h -> to show the total size occupied by the shared library
 		Eg : total 52k
+```
+
+<b> Using <i>LD_LIBRARY_PATH</i></b>
+
+	In Linux, the environment variable LD_LIBRARY_PATH is a colon-separated set of directories where libraries
+	should be searched for first, before the standard set of directories; this is useful when debugging a new
+	library or using a nonstandard library for special purposes.
+```
+$ LD_LIBRARY_PATH = $LD_LIBRARY_PATH : $ /home/abinash/Advanced-C/static_dynamic/dynamic_library
+export LD_LIBRARY_PATH
+$ ./output
 ```
