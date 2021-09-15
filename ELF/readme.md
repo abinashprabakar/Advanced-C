@@ -1,7 +1,8 @@
 # Executable and Linkable Format (ELF)
 
 <b> elf_or_not.c </b> - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/ELF/elf_or_not.c">code</a>
-	This program is to check whether the file is ELF or not
+	
+		This program is to check whether the file is ELF or not
 
 <h1> What is ELF ? </h1>
 
