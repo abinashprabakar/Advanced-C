@@ -26,3 +26,15 @@ msgrcv() : messages are retrieved from a queue.
 
 msgctl() : It performs various operations on a queue. Generally it is use to destroy message queue.
 ```
+
+<b> message_insert.c </b> - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/MessageQueue/message_insert.c">code</a>
+
+	This program implements the operation of create the message queue and insert 1 message into message queue.
+
+<b> message_read_from_queue.c </b> - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/MessageQueue/message_read_from_queue.c">code</a>
+
+	This program implements the operation of creating the message queue and read the message from the mesaage queue.
+
+<b> queue_fork_process.c </b> - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/MessageQueue/queue_fork_process.c">code</a>
+
+		This program implements the message queue operation using fork() system call.
