@@ -356,4 +356,4 @@ To compile :
 	gcc -g -o checkelf checkelf.c
 	./checkelf filename
 
-![elf file checking](file:///E:/Notes/XS%20notes/github%20photos/elf.png)
+![elf file checking](E:/Notes/XS notes/github photos/elf.png)
