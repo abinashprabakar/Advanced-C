@@ -9,7 +9,7 @@
 To compile:
 
 	gcc -g -o checkelf checkelf.c
-	./checkelf filename                                                                                                                         
+	./checkelf filename  
 
 <h1> What is ELF ? </h1>
 
