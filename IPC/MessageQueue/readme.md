@@ -37,4 +37,4 @@ msgctl() : It performs various operations on a queue. Generally it is use to des
 
 <b> queue_fork_process.c </b> - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/IPC/MessageQueue/queue_fork_process.c">code</a>
 
-		This program implements the message queue operation using fork() system call.
+	This program implements the message queue operation using fork() system call.
