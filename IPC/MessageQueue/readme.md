@@ -16,9 +16,13 @@ in order to gain access to the queue in the first place.
 <i> System calls used for message queue </i>
 <ul>
 <b> ftok() </b>   : is use to generate key.
+
 <b> msgget() </b> : either returns the message queue identifier for a newly created message queue or returns the
                     identifiers for a queue which exists with same key value.
+
 <b> msgsnd() </b> : Data is placed on to a message queue by calling msgsnd().
+
 <b> msgrcv() </b> : messages are retrieved from a queue.
+
 <b> msgctl() </b> : It performs various operations on a queue. Generally it is use to destroy message queue.
 </ul>
