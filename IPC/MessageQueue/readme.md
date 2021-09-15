@@ -13,7 +13,7 @@ message (via some (OS) message-passing module) onto a queue which can be read by
 given an identification or type so that processes can select the appropriate message. Process must share a common key
 in order to gain access to the queue in the first place.
 
-<i> System calls used for message queue </i>
+<b><i> System calls used for message queue </i></b>
 ```
 ftok()   : is use to generate key.
 
