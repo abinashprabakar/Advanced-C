@@ -18,4 +18,11 @@
 		Shared Memory allows two or more processes to share the same region (usually referred to as a segment)
 		of physical memory. Since a shared memory segment becomes part of a process's user space memory, no
 		kernel intervention is required for IPC. All that is required is that one process copies data into the
-		shared memory,that data is immediately available to all othet processers sharing the same segment.	
+		shared memory,that data is immediately available to all othet processers sharing the same segment.
+
+**MessageQueue** - <a href = "https://github.com/abinashprabakar/Advanced-C/tree/main/IPC/MessageQueue">directory</a>
+
+		Message queues are somewhat like pipes, but differ in two important aspects. First, message queue
+		boundaries are preserved, so that readers and writers communicate in ubits of messages, rather than
+		via undelimited bye stream. second, each message includes an integer type field, and it is possible
+		to select messages by type, rather than reading them in the order in which they were written.
