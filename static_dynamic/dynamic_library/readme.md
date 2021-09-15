@@ -69,7 +69,7 @@ Good, it worked! LD_LIBRARY_PATH is a great for quick tests and for systems on w
 As a downside, however, exporting the LD_LIBRARY_PATH variable means it may cause problems with other programs you run
 that also rely on LD_LIBRARY_PATH if you do not reset it to its previous state when you are done.
 
-<b> Using<i>rpath</i></b>
+<b> Using<i> rpath </i></b>
 
 Now let's try (first we will clear LD_LIBRARY_PATH to ensure it is rpath that is finding our library). Rpath, or the
 run path, is a way of embedding the location of shared libraries in the executable itself, instead of relying on default
@@ -103,3 +103,35 @@ cache. As root, do the following:
 
 	$ cp /abinash/Advanced-C/static_dynamic/dynamic_library/libabc.so /usr/lib
 	$ chmod 0755 /usr/lib/libabc.so
+
+Now the file is in a standard location, with correct permissions, readable by everybody. We need to tell the loader it
+is available for use, so let us update the cache:
+
+	$ ldconfig
+
+That should create a link to our shared library and update the cache so it is available for immediate use.
+Let us double check:
+
+	$ ldconfig -p | grep foo
+	libabc.so (libc6) => /usr/lib/libabc.so
+
+Now our library is installed. Before we test it, we have to clean up a few things:
+Clear our LD_LIBRARY_PATH once more, just in case:
+
+	$ unset LD_LIBRARY_PATH
+
+Re-link our executable. Notice we do not need the -L option since our library in stored in a default location and we
+are not using the rpath option :
+
+	$ gcc -Wall -c output main.c -lfoo
+
+Let us make sure we are using the /usr/lib instance of our library using ldd:
+
+	$ ldd test | grep foo
+	libabc.so => /usr/lib/libabc.so (0x00a42000)
+
+Good, now let us run it:
+
+	$ ./output
+	This is a shared library test...
+	Hello, I am a shared library
