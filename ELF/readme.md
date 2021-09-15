@@ -347,3 +347,13 @@ Various sections hold program and control information:
    <li> eu-readelf -section-headers /bin/ps </li>
    <li> readelf -S /bin/ps </li>
    <li> objdump -h /bin/ps </li></ul>   
+
+
+<h1> How to check whether the file is elf or not </h1>
+
+To compile :
+	
+	gcc -g -o checkelf checkelf.c
+	./checkelf filename
+
+<img src = "E:\Notes\XS notes\github photos\elf.png">
