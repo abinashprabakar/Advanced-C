@@ -356,4 +356,4 @@ To compile :
 	gcc -g -o checkelf checkelf.c
 	./checkelf filename
 
-<img src = "E:\Notes\XS notes\github photos\elf.png">
+<img src = "file:///E:/Notes/XS%20notes/github%20photos/elf.png">
