@@ -168,6 +168,7 @@ Besides the ELF Header, ELF files consists of three parts,
 	with the underlying data structure, to form a process. This process is similar for shared libraries.
 
 <img src = "https://mk0resourcesinf5fwsf.kinstacdn.com/wp-content/uploads/040216_2144_CompleteTou6.png">
+<img src = "https://github.com/lakshminarayana8522/Advanced-C/raw/main/Gcc/figures/elfph.PNG">
 
 The ELF program header is described by the Elf32_Phdr or Elf64_Phdr depending on the architecture:
 
