@@ -1,16 +1,16 @@
 /* Sample program */
 
-#include<stdio.h>
-int a, b, c=2;			/* global variable */
-static int x, y=10, z=20;	/* global static variable */
-const char str[] = "hello";
-int main()
-{
-	/* local variable */
-	static int i, j, k, n=8, m=9;
-	printf("Hello\n");
-	return 0;
-}
+	#include<stdio.h>
+	int a, b, c=2;			/* global variable */
+	static int x, y=10, z=20;	/* global static variable */
+	const char str[] = "hello";
+	int main()
+	{
+		/* local variable */
+		static int i, j, k, n=8, m=9;
+		printf("Hello\n");
+		return 0;
+	}
 
 <b><i> ELF Header: </b></i>
 
@@ -64,8 +64,8 @@ e_shnum				0x001f			Number of section header table entries
 e_shstrndx			0x001e			holds the section header table index of entry
 ```
 <b> Program Header table: Entry </b>
-   In ELF Header, the e_phoff member represents the program header table offset in this program 
-   e_phoff = 0x00000000000040. This ELF file contains total 13 program header entries.
+   In ELF Header, the e_phoff member represents the program header table offset in this program
+e_phoff = 0x00000000000040. This ELF file contains total 13 program header entries.
 ```
 00000040  06 00 00 00 04 00 00 00  40 00 00 00 00 00 00 00  |........@.......|
 00000050  40 00 00 00 00 00 00 00  40 00 00 00 00 00 00 00  |@.......@.......|
@@ -82,8 +82,8 @@ p_memsz		0x000000000002d8	Size in bytes of segment in memory
 p_align		0x00000000000008	Alignment
 ```
 <b> Section Header table: Entry </b>
-   In ELF header, the e_shoff member represents the section header table offset in this program 
-   e_shof = 0x0000000000003ad0. This ELF file contains total 30 sections.
+   In ELF header, the e_shoff member represents the section header table offset in this program
+e_shof = 0x0000000000003ad0. This ELF file contains total 30 sections.
 ```
 00003ad0  00 00 00 00 00 00 00 00  57 00 00 00 f6 ff ff 6f  |........W.......o|  
 00003ae0  02 00 00 00 00 00 00 00  a0 03 00 00 00 00 00 00  |.................|
