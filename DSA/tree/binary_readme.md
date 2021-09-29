@@ -60,11 +60,11 @@ Therefore, the depth of the binary tree is 3. </p>
 <h2><b> Types of Binary tree </h2></b>
 
 	The types of binary tree,
-i. Full / proper / strict binary tree
-ii. Complete binary tree
-iii. Perfect binary tree
-iv. Degenerate binary tree
-v. Balanced binary tree
+		i. Full / proper / strict binary tree
+		ii. Complete binary tree
+		iii. Perfect binary tree
+		iv. Degenerate binary tree
+		v. Balanced binary tree
 
 <b> Strict binary tree </b>
 
