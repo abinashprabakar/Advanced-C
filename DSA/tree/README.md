@@ -1,4 +1,4 @@
-**binary_tree.c** - <a href = https://github.com/abinashprabakar/Advanced-C/blob/main/DSA/tree/binary_tree.c">code</a>
+**binary_tree.c** - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/DSA/tree/binary_tree.c">code</a>
 
 		A tree whose elements have at most 2 children is called a binary tree. Since each element in a binary
 		tree can have only 2 children, we typically name them the left and right child. 
