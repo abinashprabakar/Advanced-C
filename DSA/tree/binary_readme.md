@@ -11,27 +11,27 @@ linked list.</p>
 
 <p> Binary trees are defined by a root node and children nodes, each node being able to have at most two children.
 There are a few keywords that we will need to know before we continue.</p>
-```
+
 	 Height  — The height of a node is the maximum number of edges separating that node from a leaf (see leaf).
 	 Depth   — The depth of a node is the number of edges separating that node from the root node.
   	 Size    — The size of a tree is the number of nodes it contains.
 	 Balance — The balance factor of a node is the difference between the height of its left subtree and the
 		   height of its right subtree.
 	 Leaf    — A leaf is a node that doesn’t have any children, in other words, an end node.
-```
+
 
 <h2><b> Order of operations </h2></b>
-```
-There are three types of tree traversal ie, pre-order, post-order, in-order.
 
-For pre-order traversal, we visit the root node first, then the left subtree, and then the right subtree.
-For in-order traversal, we visit the left subtree, then the root node, then the right subtree.
-For post-order traversal, we visit the left subtree first, then the right, and then the root node.
-```
+		There are three types of tree traversal ie, pre-order, post-order, in-order.
+
+		For pre-order traversal, we visit the root node first, then the left subtree, and then the right subtree
+		For in-order traversal, we visit the left subtree, then the root node, then the right subtree.
+		For post-order traversal, we visit the left subtree first, then the right, and then the root node.
+
 <img src = "https://media.geeksforgeeks.org/wp-content/cdn-uploads/Preorder-from-Inorder-and-Postorder-traversals.jpg">
 
 <h2><b> Height and Depth of the Binary tree </b></h2>
-```
+
 The height of a node in a binary tree is the largest number of edges in a path from a leaf node to a target node. If
 the target node doesn’t have any other nodes connected to it, the height of that node would be \mathsf{0}. The height
 of a binary tree is the height of the root node in the whole binary tree. In other words, the height of a binary tree
@@ -40,7 +40,7 @@ is equal to the largest number of the edges from the root to the most distant le
 A similar concept in a binary tree is the depth of the tree. The depth of a node in a binary tree is the total number
 of edges from the root node to the target node. Similarly, the depth of a binary tree is the total number of edges from
 the root node to the most distant leaf node.
-```
+
 <p> For example, let's take a binary tree </p>
 
 <img src = "https://www.baeldung.com/wp-content/uploads/sites/4/2020/11/Capture-2.png">
@@ -101,7 +101,7 @@ Red-Black trees are balanced binary tree.</p>
 <p> The above tree is a balanced binary tree because the difference between the left subtree and right subtree is zero.</p>
 
 <h2><b> Properties of binary tree </h2></b>
-```
+
 At each level of i, the maximum number of nodes is 2i.
 
 The height of the tree is defined as the longest path from the root node to the leaf node. The tree which is shown
@@ -138,4 +138,3 @@ As we know that,
 n = h+1
 
 h= n-1
-```
