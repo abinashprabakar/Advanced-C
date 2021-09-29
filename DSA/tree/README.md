@@ -1,3 +1,15 @@
+**binary_tree.c** - <a href = https://github.com/abinashprabakar/Advanced-C/blob/main/DSA/tree/binary_tree.c">code</a>
+
+		A tree whose elements have at most 2 children is called a binary tree. Since each element in a binary
+		tree can have only 2 children, we typically name them the left and right child. 
+
+		Binary Tree Representation in C: A tree is represented by a pointer to the topmost node in tree. If the
+		tree is empty, then value of root is NULL. 
+		A Tree node contains following parts. 
+			1. Data 
+			2. Pointer to left child 
+			3. Pointer to right child
+
 **binary_search_tree.c** - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/DSA/tree/binary_search_tree.c">code</a>
 
 		Binary Search tree can be defined as a class of binary trees, in which the nodes are arranged in a 

@@ -1,6 +1,6 @@
 CC = gcc
 FLAGS = -g -O0 -o
-SOURCES = binary_search_tree avl_tree
+SOURCES = binary_search_tree avl_tree binary tree
 
 all : $(SOURCES)
 
