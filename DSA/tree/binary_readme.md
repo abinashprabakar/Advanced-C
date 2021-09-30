@@ -33,8 +33,8 @@ There are a few keywords that we will need to know before we continue.</p>
 <h2><b> Height and Depth of the Binary tree </b></h2>
 
 The height of a node in a binary tree is the largest number of edges in a path from a leaf node to a target node. If
-the target node doesn’t have any other nodes connected to it, the height of that node would be \mathsf{0}. The height
-of a binary tree is the height of the root node in the whole binary tree. In other words, the height of a binary tree
+the target node doesn’t have any other nodes connected to it, the height of that node would be 0. The height of a 
+binary tree is the height of the root node in the whole binary tree. In other words, the height of a binary tree
 is equal to the largest number of the edges from the root to the most distant leaf node.
 
 A similar concept in a binary tree is the depth of the tree. The depth of a node in a binary tree is the total number
