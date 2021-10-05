@@ -1,8 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-
-/*Finding Number of new line characters in a buffer*/
+/* Finding Number of new line characters in a buffer */
 int find_count_of_lines(const char *str)
 {
         int liness=0, i=0;
@@ -19,7 +18,7 @@ int find_count_of_lines(const char *str)
 int find_count_of_words(const char *str)
 {
         int words=0, i;
-        // skip initial white space characters
+        /* skip initial white space characters */
         while(str[i] != '\0')
 	{
                 if( str[i] == ' ' || str[i] == '\n' || str[i]== '\r' || str[i] == '\t')
@@ -36,7 +35,7 @@ int find_count_of_words(const char *str)
                 if( str[i] == ' ' || str[i] == '\n' || str[i]== '\r' || str[i] == '\t' )
 		{
                         words+=1;
-                        // skip consecutive white space
+                        /* skip consecutive white space */
                         while(str[i]==' ' || str[i] == '\n' || str[i]== '\r' || str[i] == '\t')
 			{
                                 i++;
