@@ -107,6 +107,6 @@ int main(int argc, char **argv)
 	printf(" %s",argv[optind]);	/* display the filename */
 	
 	printf("\n");
-	fclose(fp);
+	fclose(fp);			/* close the file */
 	return 0;
 }
