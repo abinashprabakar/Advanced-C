@@ -71,7 +71,7 @@ int txt_my_wc(FILE *fp, int *lines_p, int *words_p, int *chars_p)
 }
 
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
         FILE *fp = NULL;
         int lines=0, words=0, chars=0;
