@@ -45,5 +45,6 @@ int main()
 
 	printf("\nAverage : %d\n",avg/60);
 	fclose(fp);
+
 	return 0;
 }

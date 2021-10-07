@@ -2,12 +2,14 @@
 #include<string.h>
 #include<stdlib.h>
 #include<unistd.h>
+#include<time.h>
 
 /* main program */
 int main()
 {
 	FILE *fp;
 	int r, num, i;
+	srand(time(0));			/* To generate random number for every execution */
 	r = rand() % 256;		/* Generating random number between 0 to 255 */
 
 	char fname[256];
@@ -28,6 +30,6 @@ int main()
 
 	fclose(fp);			/* close the file */
 
-	printf("%d\n",r);
+	printf("Generated number : %d\n",r);
 	exit(r);			/* exit with status r */
 }
