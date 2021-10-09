@@ -87,6 +87,7 @@ void signalHandler(int sig)
 			exit(0);
 		else if(SIGALRM == sig)
 			timed = 1;	/* timeout has occured */
+	}
 }
 /* This function reads a line of text from a file
  * we are simulating another functions behavior here ..
@@ -315,7 +316,7 @@ int main(int argc, char *argv[])
 	if (readQA(questFd, ansFd, quest, ans) == 0) break;
 
 	question++;
-    }
+    } 
 
   myPrint("final score is ");
   myPrintInt(correct);
@@ -325,5 +326,4 @@ int main(int argc, char *argv[])
 /* Problem 12 – close both files */
   close(questFd);
   close(ansFd);
-
 }
