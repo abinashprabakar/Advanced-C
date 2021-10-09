@@ -191,25 +191,6 @@ int main(int argc, char *argv[])
    * this time has no interval, just a value 
    */
 
-/* Problem 6c – initialize the structure for the 30 sec timer */
-
-
-  /* you also need to disable the timer when testing
-   * this is done by setting interval and value to 0
-   */
-  value30.it_value.tv_sec = 30;
-  value30.it_value.tv_nsec = 0;
-  value30.it_interval.tv_sec = 0;
-  value30.it_interval.tv_nsec = 0;
-
-/* Problem 6d – initialize the structure for the 0 sec timer */
-
-  /* set up the signal handlers */
-  value0.it_value.tv_sec = 0;
-  value0.it_value.tv_nsec = 0;
-  value0.it_interval.tv_sec = 0;
-  value0.it_interval.tv_nsec = 0;
-
 /* Problem 7 – associate the SIGINT and SIGALRM with their signal handler */
 
   /* open the question and answer files .. these are simple text files 
@@ -240,6 +221,25 @@ int main(int argc, char *argv[])
       myPrint("? ");
       /* we will set the timedout flag to 0, since it hasn't yet */
       timed = 0;
+
+      /* Problem 6c – initialize the structure for the 30 sec timer */
+
+
+  /* you also need to disable the timer when testing
+   * this is done by setting interval and value to 0
+   */
+  value30.it_value.tv_sec = 30;
+  value30.it_value.tv_nsec = 0;
+  value30.it_interval.tv_sec = 0;
+  value30.it_interval.tv_nsec = 0;
+
+/* Problem 6d – initialize the structure for the 0 sec timer */
+
+  /* set up the signal handlers */
+  value0.it_value.tv_sec = 0;
+  value0.it_value.tv_nsec = 0;
+  value0.it_interval.tv_sec = 0;
+  value0.it_interval.tv_nsec = 0;
 
       /* now set the interval timer prior to reading in the user's response */
 
