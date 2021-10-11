@@ -1,8 +1,7 @@
-/* Implementation of shell commands in c 
- *
+/* Implementation of shell command in c 
  * Email : abinashprabakaran@gmail.com
  * Date : 10.10.2021
- * Author : Abinash
+ * Author : Abinash 
  */
 
 #include<stdio.h>
@@ -48,10 +47,11 @@ int lsh_cd(char **args)
 	return 1;
 }
 
+
 int lsh_help(char **args)
 {
 	int i;
-  	// printf("Type program names and arguments, and hit enter.\n"); 
+  //	printf("Type program names and arguments, and hit enter.\n");
   	printf("The following are built in:\n");
 
   	for (i = 0; i < lsh_num_builtins(); i++) 
@@ -61,7 +61,7 @@ int lsh_help(char **args)
 
   	printf("Use the man command for information outside the program \n");
   	return 1;
-} 
+}
 
 int lsh_exit(char **args)
 {
@@ -128,12 +128,10 @@ char *lsh_read_line(void)
 	
 	#ifdef LSH_USE_STD_GETLINE
   	char *line = NULL;
-  	ssize_t bufsize = 0; /* have getline allocate a buffer */
-  	
-	/* reading upto last character of the line */
-	if (getline(&line, &bufsize, stdin) == -1) 
+  	ssize_t bufsize = 0; /* have getline allocate a buffer for us */
+  	if (getline(&line, &bufsize, stdin) == -1) 
 	{
-		if (feof(stdin)) 	     /* tests the end-of-file indicator */
+		if (feof(stdin)) 
 		{
 			exit(EXIT_SUCCESS);  /* We received an EOF */
 		}
@@ -149,18 +147,18 @@ char *lsh_read_line(void)
 	#else
 	#define LSH_RL_BUFSIZE 1024
   
-	int bufsize = LSH_RL_BUFSIZE;	/* allocating 1024 to bufsize */
+	int bufsize = LSH_RL_BUFSIZE;
 	int position = 0;
   	char *buffer = malloc(sizeof(char) * bufsize);	/* allocating dynamic memory for buffer */
   	int c;
 
-  	if(!buffer) 
+  	if (!buffer) 
 	{
 		fprintf(stderr, "sh: allocation error\n");
     		exit(EXIT_FAILURE);
   	}
 
-  	while(1) 
+  	while (1) 
 	{
 		/* Read a character */
 		c = getchar();
@@ -170,25 +168,24 @@ char *lsh_read_line(void)
 			exit(EXIT_SUCCESS);
     		} 
 		
-		/* if found character is newline */
 		else if (c == '\n') 
 		{
 			buffer[position] = '\0';
       			return buffer;
     		} 
 		
-		/* storing the character to the buffer[position] */
 		else 
 		{
       			buffer[position] = c;
     		}
-   		position++;	/* incrementing the position */
+   		position++;
 
-    		/* reallocating when position > buffer */
+    		/* If we have exceeded the buffer, reallocate. */
+    
 		if (position >= bufsize) 
 		{
 			bufsize += LSH_RL_BUFSIZE;
-      			buffer = realloc(buffer, bufsize);
+      			buffer = realloc(buffer, bufsize);	/* reallocating when position > buffer */
       			if (!buffer) 
 			{
 				fprintf(stderr, "sh: allocation error\n");
@@ -200,12 +197,12 @@ char *lsh_read_line(void)
 } 
 
 #define LSH_TOK_BUFSIZE 64
-#define LSH_TOK_DELIM "\t\r\n\a"
+#define LSH_TOK_DELIM " \t\r\n\a"
 
 char **lsh_split_line(char *line)
 {
 	int bufsize = LSH_TOK_BUFSIZE, position = 0;
-  	char **tokens = malloc(bufsize * sizeof(char*));	/* allocating dynamic memory for tokens */
+  	char **tokens = malloc(bufsize * sizeof(char*));	/* allocating dynamic memory for token */
   	char *token, **tokens_backup;
 
   	if (!tokens) 
@@ -214,18 +211,18 @@ char **lsh_split_line(char *line)
     		exit(EXIT_FAILURE);
   	}
 
-  	token = strtok(line, LSH_TOK_DELIM);	/* splitting the \r\t\n\a from the string */
+  	token = strtok(line, LSH_TOK_DELIM);
   	
 	while (token != NULL) 
 	{
-    		tokens[position] = token;	/* assigning token to token[pos] */
-    		position++;			/* incrementing the position */
+    		tokens[position] = token;
+    		position++;
 
-    		if (position >= bufsize) 	/* reallocate token size when position > bufsize */
+    		if (position >= bufsize) 
 		{
       			bufsize += LSH_TOK_BUFSIZE;
       			tokens_backup = tokens;
-      			tokens = realloc(tokens, bufsize * sizeof(char*));
+      			tokens = realloc(tokens, bufsize * sizeof(char*));/* reallocating memory when pos > buf */
       
 			if (!tokens) 
 			{
@@ -235,13 +232,13 @@ char **lsh_split_line(char *line)
       			}
     		}
 
-    		token = strtok(NULL, LSH_TOK_DELIM);	/* splitting the escape sequences */
+    		token = strtok(NULL, LSH_TOK_DELIM);
   	}
-  	tokens[position] = NULL;		/* assigning last token as NULL */
+  	tokens[position] = NULL;
   	return tokens;
 }
 
-void loop(void)
+void lsh_loop(void)
 {
 	char *line;
   	char **args;
@@ -249,23 +246,22 @@ void loop(void)
 
   	do 
 	{
-		printf("$ ");			/* print the $ for every new command */
-    		line = lsh_read_line();		/* lsh_read_line function call */
+		printf("$ ");
+    		line = lsh_read_line();
     		args = lsh_split_line(line);
     		status = lsh_execute(args);
 
-    		free(line);			/* freeing the line, args */
+    		free(line);
     		free(args);
   	}while (status);
 }
 
-/* main program */
 int main(int argc, char **argv)
 {
 	/* Load config files, if any. */
 
   	/* Run command loop. */
-  	loop();
+  	lsh_loop();
 
   	/* Perform any shutdown/cleanup. */
 
