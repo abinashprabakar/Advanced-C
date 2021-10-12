@@ -24,6 +24,8 @@
 
 **avl_tree.c** - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/DSA/tree/avl_tree.c">code</a>
 
+**avl_tree1.c** - <a href = "https://github.com/abinashprabakar/Advanced-C/blob/main/DSA/tree/avl_tree1.c">code</a>
+
 		AVL Tree is invented by GM Adelson - Velsky and EM Landis in 1962. The tree is named AVL in honour 
 		of its inventors.
 

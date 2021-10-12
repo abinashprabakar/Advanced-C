@@ -1,10 +1,16 @@
-CC = gcc
-FLAGS = -g -O0 -o
-SOURCES = binary_search_tree avl_tree binary tree
+all : avl_tree avl_tree1 binary_search_tree binary_tree 
 
-all : $(SOURCES)
+avl_tree : avl_tree.c
+	gcc -g -O0 -o avl_tree avl_tree.c
 
-%.o : %.c
-	$(CC) $(FLAGS) $^
-clean:
-	rm -rf *.o SOURCES
+avl_tree1 : avl_tree1.c
+	gcc -g -O0 -o avl_tree1 avl_tree1.c
+
+binary_search_tree : binary_search_tree.c
+	gcc -g -O0 -o bst binary_search_tree.c
+
+binary_tree : binary_tree.c
+	gcc -g -O0 -o binaryTree binary_tree.c
+
+clean :
+	rm -rf *.o avl_tree avl_tree1 binary_search_tree binary_tree  

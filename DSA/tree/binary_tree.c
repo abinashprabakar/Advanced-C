@@ -2,6 +2,7 @@
  *
  * Email : abinashprabakaran@gmail.com
  * Date : 28.09.21
+ * 
  * Author : Abinash
  */
 
@@ -17,22 +18,22 @@ typedef struct node{
 
 struct node *create()
 {
-	NODE *new = (NODE *)malloc(sizeof(NODE));
+	NODE *temp = (NODE *)malloc(sizeof(NODE));
 	int val;
 	printf("enter value : ");
 	scanf("%d",&val);
-	new->data = val;
+	temp->data = val;
 	if(val == -1)
 	{
 		return NULL;
 	}
-	new->right = new->left = NULL;
+	temp->right = temp->left = NULL;
 	printf("Enter left child of %d\n",val);
-	new->left = create();
+	temp->left = create();
 	printf("Enter  right child of %d\n",val);
-	new->right = create();
+	temp->right = create();
 
-	return new;
+	return temp;
 }
 
 
