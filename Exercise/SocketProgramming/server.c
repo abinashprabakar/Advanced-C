@@ -1,104 +1,100 @@
-#include<stdio.h>
+/* This is the client program. Client program will connect to the server and request the covid test results 
+ * 
+ * Email : abinashprabakaran@gmail.com
+ * Author : Abinash
+ * Date : 20.10.2021
+ */
+
+/*! include headers */
+#include<stdio.h>		/*! required for printf() scanf() */
 #include<sys/types.h>
 #include<sys/socket.h>
 #include<netinet/in.h>
-#include<stdlib.h>
-#include<string.h>
+#include<netdb.h>
 #include<unistd.h>
+#include<stdlib.h>
+#include<string.h>		/*! required for strlen() bzero */
 
+/*! function to print error message */
 void error(char *msg)
 {
-	perror(msg);
-	exit(0);
+	 perror(msg);
+	  exit(0);
 }
 
-int main(int argc, char **argv)
+/*! main program starts */
+int main(int argc, char *argv[])
 {
-	int sockfd, newsockfd, portno, clilen, n;
-	char buff[256];
-	struct sockaddr_in serv_addr, cli_addr;
+	int sockfd, portno, n;
+	struct sockaddr_in serv_addr;
+	struct hostent *server;
 
-	char str[100];
-	char dob1[9], dob2[9];
-	char code[10], code1[10];
-	char result[2];
-
-	int k;
-	FILE *fptr;
-
-	printf("Enter server port number: ");
+	char host[20];
+	char buffer[256];
+	/*! reading the host name from the stdin */
+	printf("Enter the host name: ");
+	scanf("%s",host);
+	host[strlen(host)] = 0;
+	/*! reading the port number from stdin */
+	printf("enter port no: ");
 	scanf("%d",&portno);
-
+	/*! creating endpoint for communication */
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-
-	if(sockfd < 0)
+	if (sockfd < 0)
 		error("ERROR opening socket");
 
-	bzero((char *)&serv_addr, sizeof(serv_addr));
+	/*! Given the name of a host, gethostbyname returns a pointer to the hostent structure containing the host's IP address and other information.*/
+	server = gethostbyname(host);
+	if (server == NULL)
+	{
+		fprintf(stderr,"ERROR, no such host");
+		exit(0);
+	}
+
+	/*! bzero() function initializes the structure variable with zeros */
+	bzero((char *) &serv_addr, sizeof(serv_addr));
 
 	serv_addr.sin_family = AF_INET;
+	bcopy((char *)server->h_addr,(char *)&serv_addr.sin_addr.s_addr,server->h_length);
 	serv_addr.sin_port = htons(portno);
-	serv_addr.sin_addr.s_addr = INADDR_ANY;
 
-	if(bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
-		error("ERROR on binding");
+	
 
-	while(1)
+	if (connect(sockfd,&serv_addr,sizeof(serv_addr)) < 0)
+		error("ERROR connecting");
+
+	/*! initializing buffer with zeros to avoid garbage values */
+	bzero(buffer,255);
+	/*! promt to the user to enter 9 digit unique code and birthdate */
+	printf("Please enter the 9 digit code and DOB(DD/MM/YEAR): ");
+	/*! flushing stdout */
+	fflush(stdout);
+	/*1 reading the user entered data from the stdin */
+	read(0,buffer,255);
+	/*!sending the data to server */
+	n = write(sockfd,buffer,strlen(buffer));
+	if (n < 0)
+		error("ERROR writing to socket");
+	/*! initializing buffer with zeros to avoid garbage values */
+	bzero(buffer,255);
+	/*1 reading the data from the server */
+	n = read(sockfd,buffer,255);
+	if (n < 0)
+		error("ERROR reading from socket");
+	/*! comparing the test results received from server*/
+	if(buffer[0] == 'P')
 	{
-		listen(sockfd, 5);
-		clilen = sizeof(cli_addr);
-		newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
-		if(newsockfd < 0)
-			error("ERROR on accept");
-
-		printf("Client connected...\n");
-		bzero(buff, 256);
-
-		n = read(newsockfd, buff, 255);
-		if(n < 0)
-			error("ERROR reading from socket");
-
-		sscanf(buff, "%s",code1);
-		code[9] = 0;
-
-		sscanf(buff, "%s",dob2);
-		dob2[8] = 0;
-
-		fptr = fopen("testResult20.txt","r");
-
-		while(fgets(str, 100, fptr))
-		{
-			sscanf(str, "%s",code);
-			code[9] = 0;
-
-			if(strcmp(code, code1) != 0)
-				continue;
-
-			sscanf(str+10, "%s",dob1);
-			dob1[8] = 0;
-
-			if(strcmp(dob1, dob2) != 0)
-				continue;
-
-			k = strlen(code) + strlen(dob1) + 1;
-			sscanf(str+k, "%s",result);
-			break;
-		}
-
-		if(!result)
-			strcpy(result, "X");
-
-		printf("Test Code  : %s\n",code1);
-		printf("BirthDate  : %s\n",dob2);
-		printf("Test Result: %c\n",result[0]);
-
-		fclose(fptr);
-
-		n = write(newsockfd, &result, 1);
-		if(n < 0)
-			error("ERROR writing to socket");
-
-		bzero(result, 2);
+		printf("Your test result was POSITIVE.\n");
+	}
+	/*! N for nagative */
+	else if(buffer[0] == 'N')
+	{
+		printf("Your test result was NEGATIVE.\n");
+	}
+	/*! X means not found the test results */
+	else if(buffer[0] == 'X')
+	{
+		printf("The test result you requested is not in our database.\n");
 	}
 
 	return 0;

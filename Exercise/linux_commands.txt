@@ -1,0 +1,103 @@
+1) What is your numerical user id(uid)? Note: Each user has a numeric UID associated with them. Unix does not really
+care about the username, but does care about UID. Take a look at the passwd and group files as well as the id command.
+
+		Soln : id (or) id -u username	|	sudo cat /etc/passwd
+
+
+2) What is your numerical group id?
+
+		Soln : id (or) id -g username 
+
+
+3) List any secondary group membership associated with your UID.(list the names, not the numeric IDs, all on one line)
+
+		Soln : cat /etc/group
+
+
+4) What are the permissions of the Linux group file, formatted as a rwx string?
+
+		Soln : chmod g+rwx filename
+
+
+5) What are the permissions of the Linux group file, in the numeric octal representation?
+
+		Soln : chmod 775 filename
+
+
+6) What is the filesystem path of the Linux group file? Hint: Check man group.
+
+		Soln : The /etc/group file is a text file that defines the groups on the system.  
+			There is one entry per line, with the following format:
+
+        			   group_name:password:GID:user_list
+
+       		The fields are as follows:
+
+       			group_name  the name of the group.
+
+       			password    the (encrypted) group password.  If this field is empty, no password is needed.
+
+       			GID         the numeric group ID.
+
+      		 	user_list   a list of the usernames that are members of this group, separated by commas.
+
+
+  		Example: adm:x:4:syslog,abinash
+
+
+7) What is the GID of the root group
+
+		Soln : typre id root, it'll print the following details 
+			uid=0(root) gid=0(root) groups=0(root) 
+
+
+8) What is the GID of the shadow group?
+
+		Soln : shadow is represented by x. To find gid of the shadow group -> cat /etc/group 
+
+
+9) Using the find command, list ALL directories and sub-directories in /T4/Haystack that are owned by the user csc347.
+
+		Soln : find directory-location -group {group-name} -name {file-name}
+
+
+10) Change the permissions of bottom and bottom_two to 664
+
+		Soln : chmod 0664 bottom
+		       chmod 0664 bottom_two
+
+
+11) Create an empty file foo.txt in middle_three. Now, submit a command that grants the execute permission 
+for user and group.
+
+		Soln : cd middle_three
+		       touch foo.txt
+
+		       chmod 0110 foo.txt    (or)    chmod ug+x foo.txt
+
+
+13) How to create a new user?
+
+		Soln : sudo useradd username
+
+
+14) How to change permission of ownership file, user only, group only and both?
+
+		Soln : chown u filename
+		       chmod g filename
+		       chmod u:g filename
+
+
+15) How to add directory inside another directory from outside?
+
+		Soln : mkdir -p dir1/dir2/dir3
+
+
+16) How to create a dummy file?
+
+		Soln : touch filename
+
+
+17) How to remove directory?
+
+		Soln : rm -rf dirname
